@@ -18,7 +18,7 @@ def __load_env_etc(path_envs: Path, override: bool = True) -> None:
 
 
 def load_izienv(name: str, path_envs: Path = Path(".envs"), override: bool = True) -> None:
-    path_env = path_env(path_envs=path_envs, name=name)
+    path_env = get_path_env(path_envs=path_envs, name=name)
     if not path_env.exists():
         raise ValueError(f"{path_env} dont exists.")
     
