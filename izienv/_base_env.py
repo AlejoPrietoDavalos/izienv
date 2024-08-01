@@ -1,16 +1,15 @@
 from typing import Type, TypeVar, Callable
-from pathlib import Path
 import os
-
-from izienv._load_izienv import load_izienv
 
 T_BaseEnv = TypeVar("T_BaseEnv", bound="BaseEnv")
 
 class BaseEnv:
-    def __init__(self, *, name: str, path_envs: Path = Path(".envs"), override: bool = True):
-        self.name = name
-        self.path_envs = path_envs
-        load_izienv(name=name, path_envs=self.path_envs, override=override)
+    def __init__(self, *, name: str):
+        self._name = name
+    
+    @property
+    def name(self) -> str:
+        return self._name
     
     @property
     def name_upper(self) -> str:
@@ -26,4 +25,3 @@ def load_env_var(*, raise_none_error: bool = True):
             return env_var
         return wrapper
     return decorator
-

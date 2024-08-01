@@ -18,7 +18,7 @@ NAME_ENV_VAR_2=my_var_2
 
 
 ```python
-from izienv import BaseEnv, load_env_var
+from izienv import BaseEnv, load_env_var, load_izienv
 
 class MyEnv(BaseEnv):
     @property
@@ -31,8 +31,11 @@ class MyEnv(BaseEnv):
     def VAR_2(self) -> str:
         return "VAR_2"
 
+NAME = 'name_env'
+load_izienv(name=NAME, path_envs=Path(".envs"))
+
 # You need .envs/ folder with envs. Or set `path_envs`.
-env = MyEnv(name='name_env')
+env = MyEnv(name=NAME)
 print(env.VAR_1)
 print(env.VAR_2)
 ```
