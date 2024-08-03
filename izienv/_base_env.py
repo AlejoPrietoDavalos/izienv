@@ -19,14 +19,14 @@ class BaseEnv:
 
 def load_env_var(
         *,
-        name_pre: bool = False,
+        name_left: bool = False,
         raise_none_error: bool = True,
         cast_to: Type[Any]
     ):
     """
     Generic decorator to load environment variables and cast to a specific type.
     
-    - `name_pre (bool):` Add the `upper_name` to the left of the variable. Separated by "_".
+    - `name_left (bool):` Add the `upper_name` to the left of the variable. Separated by "_".
     - `raise_none_error (bool):` Raise error if the `env_var` is None when load.
     - `cast_to (Type[Any]):` Type to cast the env var to a specific type.
     """
@@ -37,7 +37,7 @@ def load_env_var(
             if not isinstance(env_name, str):
                 raise ValueError("Expected string for `env_name`.")
 
-            if name_pre:
+            if name_left:
                 env_name = f"{self.name_upper}_{env_name}"
             
             env_var = os.getenv(env_name)
@@ -50,32 +50,32 @@ def load_env_var(
 
 def load_env_var_str(
         *,
-        name_pre: bool = False,
+        name_left: bool = False,
         raise_none_error: bool = True
     ):
     """ Specific decorator for `str`. See `load_env_var` doc for understanding."""
-    return load_env_var(name_pre=name_pre, raise_none_error=raise_none_error, cast_to=str)
+    return load_env_var(name_left=name_left, raise_none_error=raise_none_error, cast_to=str)
 
 def load_env_var_path(
         *,
-        name_pre: bool = False,
+        name_left: bool = False,
         raise_none_error: bool = True
     ):
     """ Specific decorator for `path`. See `load_env_var` doc for understanding."""
-    return load_env_var(name_pre=name_pre, raise_none_error=raise_none_error, cast_to=Path)
+    return load_env_var(name_left=name_left, raise_none_error=raise_none_error, cast_to=Path)
 
 def load_env_var_float(
         *,
-        name_pre: bool = False,
+        name_left: bool = False,
         raise_none_error: bool = True
     ):
     """ Specific decorator for `float`. See `load_env_var` doc for understanding."""
-    return load_env_var(name_pre=name_pre, raise_none_error=raise_none_error, cast_to=float)
+    return load_env_var(name_left=name_left, raise_none_error=raise_none_error, cast_to=float)
 
 def load_env_var_int(
         *,
-        name_pre: bool = False,
+        name_left: bool = False,
         raise_none_error: bool = True
     ):
     """ Specific decorator for `int`. See `load_env_var` doc for understanding."""
-    return load_env_var(name_pre=name_pre, raise_none_error=raise_none_error, cast_to=int)
+    return load_env_var(name_left=name_left, raise_none_error=raise_none_error, cast_to=int)
