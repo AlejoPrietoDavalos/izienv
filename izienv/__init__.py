@@ -1,6 +1,6 @@
 from izienv._load_izienv import load_izienv
 from izienv._base_env import (
-    BaseEnv,
+    BaseEnv, T_BaseEnv,
     load_env_var,
     load_env_var_str,
     load_env_var_path,
