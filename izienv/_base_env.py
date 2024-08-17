@@ -2,8 +2,6 @@ from typing import Type, TypeVar, Callable, Any
 from pathlib import Path
 import os
 
-from izienv._load_izienv import load_izienv
-
 T_BaseEnv = TypeVar("T_BaseEnv", bound="BaseEnv")
 
 class BaseEnv:
@@ -18,8 +16,6 @@ class BaseEnv:
     def name_upper(self) -> str:
         return self.name.upper()
 
-    def load_izienv(self, *, path_envs: Path = Path(".envs"), override: bool = True) -> None:
-        load_izienv(name=self.name, path_envs=path_envs, override=override)
 
 def load_env_var(
         *,
